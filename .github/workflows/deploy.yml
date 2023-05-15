@@ -24,6 +24,12 @@ jobs:
         echo "${SLACK_MESSAGE}"
         npm install
         curl -X POST -H 'Content-type: application/json' --data '{"text":"'"${SLACK_MESSAGE}"'"}' ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Create .env file
+      run: |
+        echo VITE_APP_NAME=${{ secrets.API_KEYVITE_APP_NAME }} >> .env
+        echo VITE_BACKEND_URL=${{ secrets.VITE_BACKEND_URL }} >> .env
+        echo VITE_BACKEND_URL_PUBLIC=${{ secrets.VITE_BACKEND_URL_PUBLIC }} >> .env
+        echo VITE_FORM_UATH_TOKEN=${{ secrets.VITE_FORM_UATH_TOKEN }} >> .env
     - name: Build
       env:
         SLACK_MESSAGE: " * Building React App Dist Folder :vite:"
