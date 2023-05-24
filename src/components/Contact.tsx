@@ -68,7 +68,7 @@ const Contact:FC = () => {
     >
       <motion.div
         variants={slideIn("left", "tween", 0.2, 1)}
-        className='w-full md:w-1/2  p-4 sm:p-8 rounded-2xl red-orange-gradient'
+        className='w-full md:w-1/2  p-4 sm:p-8 rounded-2xl'
       >
         <p className={styles.sectionSubText}>{t('Information')}</p>
         <h2 className={styles.sectionHeadText}>{t('Contact Us')}</h2>

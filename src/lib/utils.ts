@@ -132,7 +132,6 @@ export function generatePoints(viewWidth:number, viewHeight:number, numPoints:nu
 export function mapInputData(data: any):WebData {
 
 
-  console.log(data.webContent);
   data.webContent       = mapWebContent(data.webContent);
   data.experiences      = mapExperiences(data.experiences);
   data.projects         = mapProjects(data.projects);
@@ -385,6 +384,7 @@ const mapBooks = (books:any):BookLanguage[] => {
   books.map((book:any)=>{
     var bookItemEs:BookProps = {
       id: book.id,
+      type: book.type,
       title: book.title,
       href: book.href,
       author: book.author,
@@ -393,6 +393,7 @@ const mapBooks = (books:any):BookLanguage[] => {
     }
     var bookItemEn:BookProps = {
       id: book.id,
+      type: book.type,
       title: book.title,
       href: book.href,
       author: book.author,
@@ -402,6 +403,7 @@ const mapBooks = (books:any):BookLanguage[] => {
 
     var bookItemIt:BookProps = {
       id: book.id,
+      type: book.type,
       title: book.title,
       href: book.href,
       author: book.author,

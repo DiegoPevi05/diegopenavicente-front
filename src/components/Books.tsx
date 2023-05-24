@@ -2,7 +2,8 @@ import {useState,useEffect} from 'react';
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../components/ui/hoc";
-import { ChevronLeft, ChevronRight} from "lucide-react";
+import { ChevronLeft, ChevronRight, Code,Book} from "lucide-react";
+import Button from '../components/ui/Button';
 import {useTranslation} from 'react-i18next';
 import {BookLanguage,BookProps} from '../interfaces'
 
@@ -71,15 +72,24 @@ const BooksComponent = (props:BookCompProps) => {
   const [currentIndex,setCurrentIndex] = useState<number>(0);
   const [BooksData,setBooksData] = useState<BookProps[]>([]);
   const [ShowData,setShowData] = useState<BookProps[]>([]);
+  const [typeSelected,setTypeSelected] = useState<string>("code");
 
   useEffect(()=>{
     if(books && books.length > 0){
-      const languageProduct = books.find(item => item.language === i18n.language);
-      if(languageProduct){
-        setBooksData(languageProduct.content.sort((a, b) => b.id - a.id));
+      const languageBook = books.find(item => item.language === i18n.language);
+      if(languageBook){
+        const filteredTypeBooks = languageBook.content.filter(item => item.type === typeSelected);
+        if(filteredTypeBooks){
+          setBooksData(filteredTypeBooks.sort((a, b) => b.id - a.id));
+        }
       }
     }
-  },[i18n.language])
+    setCurrentIndex(0);
+  },[i18n.language,typeSelected])
+
+  const handleTypeSelect = (type:string) => {
+    setTypeSelected(type);
+  }
 
   // New function to update the number of cards based on screen width
   const updateNumberCards = () => {
@@ -135,6 +145,10 @@ const BooksComponent = (props:BookCompProps) => {
   return (
     <div className="relative w-full h-full flex flex-col justify-center items-center">
       <h1 className={`${styles.sectionSubText} relative top-32 text-center w-full`}>{t("Some Books i recommend")}</h1>
+      <div className="w-full h-auto relative top-40 flex flex-row justify-center items-center z-[1000] gap-4">
+        <Button onClick={()=>handleTypeSelect("code")} className={`${typeSelected === "code" ? 'bg-secondary':''} ease-in-out duration-700`}><Code className="mr-2"/>{t("Code")}</Button>
+        <Button onClick={()=>handleTypeSelect("cultural")} className={`${typeSelected === "cultural" ? 'bg-secondary':''} ease-in-out duration-700 `}><Book className="mr-2"/>{t("Cultural")}</Button>
+      </div>
       <div className="w-full h-full flex flex-col md:flex-row items-center gap-0 sm:gap-4 overflow-hidden">
         <ChevronLeft className="hidden md:flex h-16 w-16 hover:translate-x-[-10px] ease-in-out duration-500 cursor-pointer" onClick={()=>previousSlide()}/>
         <motion.div
@@ -148,9 +162,9 @@ const BooksComponent = (props:BookCompProps) => {
           ))}
         </motion.div>
         <ChevronRight className="hidden md:flex h-16 w-16 hover:translate-x-[10px] ease-in-out duration-500 cursor-pointer" onClick={()=>nextSlide()} />
-        <div className="relative bottom-10 flex flex-row justify-center items-center gap-4 md:hidden">
-          <ChevronLeft className="flex h-16 w-16 hover:translate-y-[-20px] ease-in-out duration-500 cursor-pointer" onClick={()=>previousSlide()}/>
-          <ChevronRight className="flex h-16 w-16 hover:translate-y-[-20px] ease-in-out duration-500 cursor-pointer" onClick={()=>nextSlide()} />
+        <div className="relative bottom-5 sm:bottom-10 flex flex-row justify-center items-center gap-4 md:hidden">
+          <ChevronLeft className="flex h-10 w-10 sm:h-16 sm:w-16 hover:translate-y-[-20px] ease-in-out duration-500 cursor-pointer" onClick={()=>previousSlide()}/>
+          <ChevronRight className="flex h-10 w-10 sm:h-16 sm:w-16 hover:translate-y-[-20px] ease-in-out duration-500 cursor-pointer" onClick={()=>nextSlide()} />
         </div>
       </div>
     </div>

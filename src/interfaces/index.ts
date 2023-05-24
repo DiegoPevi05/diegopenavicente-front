@@ -66,6 +66,7 @@ export interface BookLanguage{
 
 export interface BookProps{
   id:number;
+  type:string;
   img:string;
   href:string;
   title:string;
