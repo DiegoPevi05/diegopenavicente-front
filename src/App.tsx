@@ -6,6 +6,7 @@ import './lib/i18n';
 import {mapInputData} from './lib/utils';
 import {toast} from "react-hot-toast";
 import {WebData} from './interfaces';
+import  LoadingComponent from './components/ui/Loader';
 import axios from 'axios';
 
 
@@ -29,7 +30,7 @@ function App() {
 
 
   return(
-    <Suspense fallback='loading'>
+    <Suspense fallback={<LoadingComponent isLoading={true}/>}>
       <Providers>
           <Router>
             <Routes>
