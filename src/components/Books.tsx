@@ -13,6 +13,7 @@ interface propsBookDetail extends BookProps {
 
 const BookItem = (props:propsBookDetail) => {
   const { index,id,img, href, title, author,content } = props 
+  const {t} = useTranslation();
 
   return (
     <motion.ul 
@@ -34,7 +35,7 @@ const BookItem = (props:propsBookDetail) => {
           <ul className='page'>
             <li></li>
             <li>
-              <a className="btn hover:text-secondary hover:border-secondary" target="_blank" href={href}>Buy</a>
+              <a className="btn hover:text-secondary hover:border-secondary" target="_blank" href={href}>{t('Buy')}</a>
             </li>
             <li></li>
             <li></li>
