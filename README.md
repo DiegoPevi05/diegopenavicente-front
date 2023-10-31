@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Landing Page Nuna 
+# Landing Page  DiegoPenaVicente
 
 This Front-End application is developed to show the content of the landing page [diegopenavicente](https://diegopenavicente.com) .
 Welcome to the Front-End WebPage of DiegoPenaVicente! This landing page is deisgined to show the content and projects made by the developer Diego Pena Vicente.Here are the key features and details of this application:
