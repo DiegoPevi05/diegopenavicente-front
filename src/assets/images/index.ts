@@ -1,4 +1,4 @@
-import Logo from './Logo.svg';
+import Logo from '/logo512.png';
 import PeruFlag from './PeruFlag.svg';
 import UsaFlag from './UsaFlag.svg';
 import ItalyFlag from './ItalyFlag.svg';

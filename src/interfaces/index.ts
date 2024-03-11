@@ -42,6 +42,7 @@ export interface ProjectProps {
   logo:string;
   description:string;
   link:string;
+  github:string;
   languages:{id:number; title:string }[];
 }
 

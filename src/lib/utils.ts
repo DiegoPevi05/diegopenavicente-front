@@ -261,6 +261,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       description: project.description_es,
       link: project.link,
       languages: project.languages,
+      github: project.github
     }
     var projectItemEn:ProjectProps = {
       id: project.id,
@@ -269,6 +270,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       description: project.description_en,
       link: project.link,
       languages: project.languages,
+      github: project.github
     }
 
     var projectItemIt:ProjectProps = {
@@ -278,6 +280,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       description: project.description_it,
       link: project.link,
       languages: project.languages,
+      github: project.github
     }
 
     ProjectsSpanish.push(projectItemEs);

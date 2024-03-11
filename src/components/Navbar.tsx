@@ -73,7 +73,7 @@ const Navbar: FC = () => {
             <a href="#" className="-m-1.5 p-1.5"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <span className="sr-only">La Nonna Rose</span>
+              <span className="sr-only">Diego Pena</span>
               <img
               className="h-16 w-auto"
                 src={Logo}

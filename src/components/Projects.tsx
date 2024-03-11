@@ -2,7 +2,7 @@ import {useState,useEffect} from 'react';
 import { motion } from "framer-motion";
 import { SectionWrapper } from "../components/ui/hoc";
 import Link from '../components/ui/Link';
-import { ChevronLeft, ChevronRight, ExternalLink} from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink, Github} from "lucide-react";
 import {useTranslation} from 'react-i18next';
 import {ProjectLanguage,ProjectProps} from '../interfaces'
 
@@ -13,7 +13,7 @@ interface propsProjectCardDetail extends ProjectProps {
 }
 
 const ProjectCardDetail = (props:propsProjectCardDetail) => {
-  const { index,id,project, logo, description, link,languages } = props 
+  const { index,id,project, logo, description, link, github,languages } = props 
   const {t} = useTranslation();
   const [OpenCard,setOpenCard] = useState<boolean>(false);
 
@@ -43,8 +43,9 @@ const ProjectCardDetail = (props:propsProjectCardDetail) => {
       </div>
       <div className={`w-full bg-white flex flex-col justify-center items-center shadow-cardlight ${OpenCard ? "translate-y-[0px] h-[300px]" :"h-[250px] sm:h-[300px] translate-y-[-150px]"} duration-700 ease-in-out p-4 gap-4`}>
         <p className="text-justify text-[11px] sm:text-[14px] lg:text-[12px] text-primary lg:leading-[15px]">{description}</p>
-        <div className="flex flex-start w-full h-auto">
+        <div className="flex flex-row justify-between w-full h-auto">
           <Link size="sm" href={link} target="_blank" className="px-4">{t("Go To")} <ExternalLink className="h-3 w-3 sm:h-5 sm:w-5"/></Link>
+          <Link size="sm" href={github} target="_blank" className="p-4"><Github className="h-3 w-3 sm:h-5 sm:w-5" /></Link>
         </div>
         <div className="flex flex-start flex-wrap w-full h-auto gap-2">
           {languages.map((language)=>(

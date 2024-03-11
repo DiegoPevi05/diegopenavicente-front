@@ -107,6 +107,7 @@ const Skills = (props:SkillCompProps) => {
         setNumberElements(languageProduct.content.length);
       }
     }
+    ReGeneratePoints();
   },[i18n.language])
 
   const hoverLanguage = (languageSelect:string) => {

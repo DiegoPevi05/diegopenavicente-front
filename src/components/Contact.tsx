@@ -45,13 +45,11 @@ const Contact:FC = () => {
     try{
       const config = {
         headers: {
-          Authorization: import.meta.env.VITE_FORM_UATH_TOKEN
+          "accept-language": i18n.language,
+          "x-api-key": import.meta.env.VITE_API_KEY,
         },
-        params:{
-          language:i18n.language
-        }
       }
-      await axios.post(import.meta.env.VITE_BACKEND_URL+"/api/send-email",form,config);
+      await axios.post(import.meta.env.VITE_BACKEND_URL+"/api/send-email/dp",form,config);
       setForm(emptyData);
       toast.success("Mensaje enviado con éxito");
     } catch(error){
@@ -83,7 +81,7 @@ const Contact:FC = () => {
               value={form.name}
               onChange={handleChange}
               placeholder={t('What is your name?').toString()}
-              className='bg-secondary py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:font-medium
+              className='bg-sky-300 py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:font-medium
                 transition-color focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
               '
             />
@@ -96,7 +94,7 @@ const Contact:FC = () => {
               value={form.email}
               onChange={handleChange}
               placeholder={t('What is your email?').toString()}
-              className='bg-secondary py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:font-medium
+              className='bg-sky-300 py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:font-medium
                 transition-color focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
               '
             />
@@ -109,7 +107,7 @@ const Contact:FC = () => {
               value={form.message}
               onChange={handleChange}
               placeholder={t('What you want to say?').toString()}
-              className='bg-secondary py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:text-lg 
+              className='bg-sky-300 py-2 sm:py-4 px-6 text-primary placeholder:text-primary rounded-lg font-small sm:text-lg 
                 transition-color focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
               '
             />
