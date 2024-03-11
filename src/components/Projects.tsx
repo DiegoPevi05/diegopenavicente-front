@@ -48,7 +48,7 @@ const ProjectCardDetail = (props:propsProjectCardDetail) => {
         </div>
         <div className="flex flex-start flex-wrap w-full h-auto gap-2">
           {languages.map((language,index)=>(
-            <span key={"languages_"+index} className="shadow-cardlight rounded-full bg-white px-2 text-[10px] hover:translate-y-[-5px] ease-in-out duration-300">#{language}</span>
+            <span key={"languages_"+language.id} className="shadow-cardlight rounded-full bg-white px-2 text-[10px] hover:translate-y-[-5px] ease-in-out duration-300">#{language.title}</span>
           ))}
         </div>
       </div>

@@ -17,8 +17,11 @@ function App() {
   //axios to call api and get data
   const getDataFromServer = async () => {
     try {
-      const response = await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/content-web/all');
-      await setWebData(mapInputData(response.data));
+      const header = {
+        "x-api-key": import.meta.env.VITE_API_KEY,
+      }
+      const response = await axios.get(import.meta.env.VITE_BACKEND_URL+'/api/content-web/all', {headers: header});
+      setWebData(mapInputData(response.data));
     }catch (err) {
       toast.error("Ha habido un error trayendo la información del servidor");
     } 

@@ -73,7 +73,7 @@ const BooksComponent = (props:BookCompProps) => {
   const [currentIndex,setCurrentIndex] = useState<number>(0);
   const [BooksData,setBooksData] = useState<BookProps[]>([]);
   const [ShowData,setShowData] = useState<BookProps[]>([]);
-  const [typeSelected,setTypeSelected] = useState<string>("code");
+  const [typeSelected,setTypeSelected] = useState<string>("CODE");
 
   useEffect(()=>{
     if(books && books.length > 0){
@@ -147,8 +147,8 @@ const BooksComponent = (props:BookCompProps) => {
     <div className="relative w-full h-full flex flex-col justify-center items-center">
       <h1 className={`${styles.sectionSubText} relative top-32 text-center w-full`}>{t("Some Books i recommend")}</h1>
       <div className="w-full h-auto relative top-40 flex flex-row justify-center items-center z-[1000] gap-4">
-        <Button onClick={()=>handleTypeSelect("code")} className={`${typeSelected === "code" ? 'bg-secondary':''} ease-in-out duration-700`}><Code className="mr-2"/>{t("Code")}</Button>
-        <Button onClick={()=>handleTypeSelect("cultural")} className={`${typeSelected === "cultural" ? 'bg-secondary':''} ease-in-out duration-700 `}><Book className="mr-2"/>{t("Cultural")}</Button>
+        <Button onClick={()=>handleTypeSelect("CODE")} className={`${typeSelected === "CODE" ? 'bg-secondary':''} ease-in-out duration-700`}><Code className="mr-2"/>{t("Code")}</Button>
+        <Button onClick={()=>handleTypeSelect("Cultural")} className={`${typeSelected === "Cultural" ? 'bg-secondary':''} ease-in-out duration-700 `}><Book className="mr-2"/>{t("Cultural")}</Button>
       </div>
       <div className="w-full h-full flex flex-col md:flex-row items-center gap-0 sm:gap-4 overflow-hidden">
         <ChevronLeft className="hidden md:flex h-16 w-16 hover:translate-x-[-10px] ease-in-out duration-500 cursor-pointer" onClick={()=>previousSlide()}/>

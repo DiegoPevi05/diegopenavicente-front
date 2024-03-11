@@ -187,7 +187,7 @@ const mapExperiences = (experiences:any):ExperienceLanguage[] => {
       id: experience.id,
       job: experience.job_es,
       company: experience.company,
-      details: [],
+      details: experience.details_es,
       startDate: experience.startDate.split(" ")[0],
       endDate: experience.endDate.split(" ")[0],
       images:[]
@@ -196,7 +196,7 @@ const mapExperiences = (experiences:any):ExperienceLanguage[] => {
       id: experience.id,
       job: experience.job_en,
       company: experience.company,
-      details: [],
+      details: experience.details_en,
       startDate: experience.startDate.split(" ")[0],
       endDate: experience.endDate.split(" ")[0],
       images:[]
@@ -206,46 +206,28 @@ const mapExperiences = (experiences:any):ExperienceLanguage[] => {
       id: experience.id,
       job: experience.job_it,
       company: experience.company,
-      details: [],
+      details: experience.details_it,
       startDate: experience.startDate.split(" ")[0],
       endDate: experience.endDate.split(" ")[0],
       images:[]
     }
 
-    try {
-      experienceItemEs.details = JSON.parse(experience.details_es);
-    } catch (error) {
-      experienceItemEs.details = [];
-    }
-
-    try {
-      experienceItemEn.details = JSON.parse(experience.details_en);
-    } catch (error) {
-      experienceItemEn.details = [];
-    }
-
-    try {
-      experienceItemIt.details = JSON.parse(experience.details_it);
-    } catch (error) {
-      experienceItemIt.details = [];
-    }
-
-    if(experience.image1 !== "N/A"){
+    if(experience.image1 !== null){
       experienceItemEn.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image1)
       experienceItemEs.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image1)
       experienceItemIt.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image1)
     }
-    if(experience.image2 !== "N/A"){
+    if(experience.image2 !== null){
       experienceItemEs.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image2)
       experienceItemEn.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image2)
       experienceItemIt.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image2)
     }
-    if(experience.image3 !== "N/A"){
+    if(experience.image3 !== null){
       experienceItemEs.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image3)
       experienceItemEn.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image3)
       experienceItemIt.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image3)
     }
-    if(experience.image4 !== "N/A"){
+    if(experience.image4 !== null){
       experienceItemEs.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image4)
       experienceItemEn.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image4)
       experienceItemIt.images.push(import.meta.env.VITE_BACKEND_URL_PUBLIC+experience.image4)
@@ -278,7 +260,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       logo: import.meta.env.VITE_BACKEND_URL_PUBLIC+project.logo,
       description: project.description_es,
       link: project.link,
-      languages: [],
+      languages: project.languages,
     }
     var projectItemEn:ProjectProps = {
       id: project.id,
@@ -286,7 +268,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       logo: import.meta.env.VITE_BACKEND_URL_PUBLIC+project.logo,
       description: project.description_en,
       link: project.link,
-      languages: [],
+      languages: project.languages,
     }
 
     var projectItemIt:ProjectProps = {
@@ -295,17 +277,7 @@ const mapProjects = (projects:any):ProjectLanguage[] => {
       logo: import.meta.env.VITE_BACKEND_URL_PUBLIC+project.logo,
       description: project.description_it,
       link: project.link,
-      languages: [],
-    }
-
-    try {
-      projectItemEs.languages = JSON.parse(project.languages);
-      projectItemEn.languages = JSON.parse(project.languages);
-      projectItemIt.languages = JSON.parse(project.languages);
-    } catch (error) {
-      projectItemEs.languages = [];
-      projectItemEn.languages = [];
-      projectItemIt.languages = [];
+      languages: project.languages,
     }
 
     ProjectsSpanish.push(projectItemEs);
@@ -334,14 +306,14 @@ const mapSkills = (skills:any):SkillLanguage[] => {
       title: skill.title,
       image: import.meta.env.VITE_BACKEND_URL_PUBLIC+skill.image,
       description: skill.description_es,
-      keywords: [],
+      keywords: skill.keywords,
     }
     var skillItemEn:SkillProps = {
       id: skill.id,
       title: skill.title,
       image: import.meta.env.VITE_BACKEND_URL_PUBLIC+skill.image,
       description: skill.description_en,
-      keywords: [],
+      keywords: skill.keywords,
     }
 
     var skillItemIt:SkillProps = {
@@ -349,17 +321,7 @@ const mapSkills = (skills:any):SkillLanguage[] => {
       title: skill.title,
       image: import.meta.env.VITE_BACKEND_URL_PUBLIC+skill.image,
       description: skill.description_it,
-      keywords: [],
-    }
-
-    try {
-      skillItemEs.keywords = JSON.parse(skill.keywords);
-      skillItemEn.keywords = JSON.parse(skill.keywords);
-      skillItemIt.keywords = JSON.parse(skill.keywords);
-    } catch (error) {
-      skillItemEs.keywords = [];
-      skillItemEn.keywords = [];
-      skillItemIt.keywords = [];
+      keywords: skill.keywords,
     }
 
     SkillsSpanish.push(skillItemEs);
