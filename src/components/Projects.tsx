@@ -47,7 +47,7 @@ const ProjectCardDetail = (props:propsProjectCardDetail) => {
           <Link size="sm" href={link} target="_blank" className="px-4">{t("Go To")} <ExternalLink className="h-3 w-3 sm:h-5 sm:w-5"/></Link>
         </div>
         <div className="flex flex-start flex-wrap w-full h-auto gap-2">
-          {languages.map((language,index)=>(
+          {languages.map((language)=>(
             <span key={"languages_"+language.id} className="shadow-cardlight rounded-full bg-white px-2 text-[10px] hover:translate-y-[-5px] ease-in-out duration-300">#{language.title}</span>
           ))}
         </div>
