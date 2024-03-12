@@ -11,7 +11,8 @@ import {
   SkillLanguage,
   SkillProps,
   BookLanguage,
-  BookProps
+  BookProps,
+  MyFYPProps
 } from "../interfaces"
 
 
@@ -131,12 +132,13 @@ export function generatePoints(viewWidth:number, viewHeight:number, numPoints:nu
 
 export function mapInputData(data: any):WebData {
 
-
-  data.webContent       = mapWebContent(data.webContent);
+  const dataWebRaw      = data.webContent;
+  data.webContent       = mapWebContent(dataWebRaw);
   data.experiences      = mapExperiences(data.experiences);
   data.projects         = mapProjects(data.projects);
   data.skills           = mapSkills(data.skills);
   data.books            = mapBooks(data.books);
+  data.myfyp            = mapMyFYP(dataWebRaw);
 
   return data;
 }
@@ -174,6 +176,47 @@ const mapWebContent = (webContent:any):webContentLanguage[] => {
   ];
 
   return  webContentLan;
+}
+
+const mapMyFYP = (webContent:webContentLanguage[]):any[] => {
+  var myFYPData:MyFYPProps[] = [];
+  var posibleOptions:any[] = [
+    {GitHubLink: "Github" },
+    {LinkedInLink: "Linkedin"},
+    {TwitterLink: "Twitter"},
+    {InstagramLink: "Instagram"},
+  ]
+
+  myFYPData.push({
+    id: "1",
+    name: "WebPage",
+    link: "https://www.diegopenavicente.com",
+    icon: "Earth"
+  });
+
+  myFYPData.push({
+    id: "1",
+    name: "Company",
+    link: "https://www.digitalprocessit.com",
+    icon: "Building2"
+  });
+
+
+  webContent.map((item:any)=>{
+    posibleOptions.forEach(option => {
+      // Check if the item.name exists as a key in the current option object
+      if (item.name in option) {
+        myFYPData.push({
+          id: item.id,
+          name: option[item.name],
+          link: item.content_es,
+          icon: option[item.name]
+        });
+      }
+    });
+  })
+
+  return myFYPData;
 }
 
 const mapExperiences = (experiences:any):ExperienceLanguage[] => {

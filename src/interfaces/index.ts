@@ -4,6 +4,7 @@ export interface WebData {
   projects: ProjectLanguage[];
   skills:SkillLanguage[];
   books:BookLanguage[];
+  myfyp:MyFYPProps[];
 }
 
 export interface webContentLanguage {
@@ -14,6 +15,13 @@ export interface WebContentProps {
   id:string; 
   name:string;
   content:string;
+}
+
+export interface MyFYPProps{
+  id:string;
+  name:string;
+  link:string;
+  icon:string;
 }
 
 export interface ExperienceLanguage {

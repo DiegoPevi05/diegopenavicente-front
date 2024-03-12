@@ -1,5 +1,6 @@
 import {Suspense, useState, useEffect} from 'react';
 import Home from './pages/Home';
+import MyFYP from './pages/myfyp';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Providers from './components/Providers';
 import './lib/i18n';
@@ -8,7 +9,6 @@ import {toast} from "react-hot-toast";
 import {WebData} from './interfaces';
 import  LoadingComponent from './components/ui/Loader';
 import axios from 'axios';
-
 
 
 function App() {
@@ -38,6 +38,7 @@ function App() {
           <Router>
             <Routes>
               <Route path='/' element={<Home webData={webData}/>} />
+              <Route path='/myfyp' element={<MyFYP links={webData?.myfyp} />} />
             </Routes>
           </Router>
       </Providers>
