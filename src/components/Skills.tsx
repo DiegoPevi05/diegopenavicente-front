@@ -64,7 +64,7 @@ const SkillDetail = (props:propsDetail) => {
       animate={{ x: 0, y:0,opacity: 1 }}
       exit={{ x: 0,y:"100%", opacity: 0 }}
       className={`absolute cursor-pointer rounded-full bg-white-100 flex flex-col justify-center items-center ${showDetail ? "z-[100]":"z-[40]" } shadow-cardlight`}>
-      <img src={image} className="w-auto h-full rounded-full object-cover overflow-hidden"/>
+      <img src={image} className="w-auto h-full rounded-full object-cover overflow-hidden bg-white"/>
         <div 
           className={`absolute flex-col justify-start items-center bg-primary rounded-lg ${showDetail ? "flex" : "hidden"} overflow-hidden p-4 gap-4`}
           style={skillDescriptionPosition}
