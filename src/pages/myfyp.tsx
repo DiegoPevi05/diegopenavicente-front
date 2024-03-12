@@ -76,9 +76,9 @@ const MyFYP = (props:MyFYPPropsInternal) => {
           <LanguageSelector/>
         </div>
         <h1 className="font-heading">Diego Peña Vicente</h1>
-        <img src={DiegoProfile} className="rounded-full h-36 w-36 border-primary border-4"/>
+        <img src={DiegoProfile} className="rounded-full h-28 w-28 border-primary border-4"/>
         <p className="font-heading text-xs text-primary text-center w-full">{t("Welcome to my personal link webpage here are my social networks and my company page")}</p>
-        <div className="w-full h-auto gap-8 flex flex-col justify-center items-center">
+        <div className="w-full h-auto gap-6 flex flex-col justify-center items-center">
           {links.map((link, index) => (
             <SelectionButton key={index} index={index} text={t(link.name)} href={link.link} iconName={link.icon} triggerLink={GoToLink}/>
           ))}
